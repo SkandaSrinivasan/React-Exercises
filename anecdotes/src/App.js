@@ -16,29 +16,40 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [voteCount, setVoteCount] = useState(new Array(anecdotes.length).fill(0));
+
+
   const getRandomInt =  (max)=> {
     return Math.floor(Math.random() * max);
   }
   const setSelectionValue = () => (setSelected(getRandomInt(anecdotes.length)))
 
-  console.log(typeof(anecdotes[selected]))
+  const setVoteCountValue = () => {
+    const copy = [...voteCount]
+    copy[selected]+=1
+    setVoteCount(copy)
+  }
   
   return (
     <div>
       <DisplayAnecdote anecdote={anecdotes[selected]} />
-      
       <br></br>
       <br></br>
-      <QuoteButton handleClick={setSelectionValue} text="Random Anecdote" />
+      <DisplayVote voteCount={voteCount[selected]} />
+      <br></br>
+      <br></br>
+      <Button handleClick={setSelectionValue} text="Random Anecdote" />
+
+      <VoteButton handleClick={setVoteCountValue} text="Vote" />
+      {anecdotes[Math.max(...voteCount)]} {/* //Just to show the quote with the max votes */}
     </div>
   )
 }
 const DisplayAnecdote = ({anecdote}) => {
   return (<h1>{anecdote}</h1>)
 }
-const QuoteButton = ({handleClick, text}) => {
-  
-  return (<button onClick={() => handleClick()}>{text}</button>)
-}
+const Button = ({handleClick, text}) => ((<button onClick={() => handleClick()}>{text}</button>))
+const VoteButton =({handleClick, text}) => ((<button onClick={() => handleClick()}>{text}</button>))
+const DisplayVote = ({voteCount}) => (<b>Vote Count for this anecdote is: {voteCount}</b>)
 
 export default App;
