@@ -14,31 +14,31 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blod tests when dianosing patients'
   ]
-const count = []
-  for(let i = 0 ; i < anecdotes.length; i++){
-    count.push(0)
-  }
 
   const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(count)
   const getRandomInt =  (max)=> {
     return Math.floor(Math.random() * max);
   }
-  const setSelectionValue = (value) => (setSelected(getRandomInt(anecdotes.length)))
-  const setVoteValue = (value) => (setVotes(...votes,votes[value]+1))
-  console.log("Selected is" + selected);
+  const setSelectionValue = () => (setSelected(getRandomInt(anecdotes.length)))
+
+  console.log(typeof(anecdotes[selected]))
+  
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <QuoteButton handleClick={setSelectionValue} length={anecdotes.length} text="Random Quote" />
-      <QuoteButton handleClick={setSelectionValue} length={anecdotes.length} text="Random Quote" />
+      <DisplayAnecdote anecdote={anecdotes[selected]} />
+      
+      <br></br>
+      <br></br>
+      <QuoteButton handleClick={setSelectionValue} text="Random Anecdote" />
     </div>
   )
 }
-
-const QuoteButton = ({handleClick, length, text}) => {
+const DisplayAnecdote = ({anecdote}) => {
+  return (<h1>{anecdote}</h1>)
+}
+const QuoteButton = ({handleClick, text}) => {
   
-  return (<button onClick={() => handleClick(length)}>{text}</button>)
+  return (<button onClick={() => handleClick()}>{text}</button>)
 }
 
 export default App;
