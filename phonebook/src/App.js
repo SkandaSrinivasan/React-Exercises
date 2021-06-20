@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import contactService from './services/contacts'
 const App = () => {
 
-  
-
   const [persons, setPersons] = useState([])
 
   const [newName, setNewName] = useState('')
@@ -12,6 +10,8 @@ const App = () => {
   const [searchName, setSearchName] = useState('')
 
   const [number, setNumber] = useState('')
+
+  const [notificationMessage, setNotificationMessage] = useState('Some notification')
 
   useEffect(() => {
     contactService
@@ -62,17 +62,22 @@ const App = () => {
      }
     
     const newContact = { name: newName , number}
-
       contactService.createContact(newContact).then(
         (returnedContact) => {
-        setPersons(persons.concat(returnedContact))
+        setPersons(persons.concat(returnedContact));
+        setNotificationMessage(`${returnedContact.name} was added to phonebook`);
+        setTimeout(() => {
+          setNotificationMessage(null)
+        }, 2000)
       }
     )
+    
   }
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={notificationMessage} />
       <div>
         Search: <input value={searchName} onChange={updateSearchName} />
       </div>
@@ -120,5 +125,15 @@ const DeleteButton = (({id, upFunc}) => {
   }
   return (<button onClick={() => delContact(id)} >Delete</button>)
 }) 
+
+const Notification = ({message}) => {
+  if(message === null) return null;
+
+  return (
+    <div className="notification">
+      {message}
+    </div>
+  )
+}
 
 export default App
