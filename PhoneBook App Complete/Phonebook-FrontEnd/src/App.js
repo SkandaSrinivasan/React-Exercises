@@ -52,11 +52,11 @@ const App = () => {
       const alertResponse = window.confirm(`This dude -> ${newName} already in yo. Update number?`)
       const contact = persons.find(contact => contact.name === newName)
       const changedContact = {...contact, number: number}
-      // if(alertResponse){
-      //   console.log('alert')
-      //   contactService
-      //     .updateContact(contact.id, changedContact).then(cont => refreshContacts())
-      // }
+      if(alertResponse){
+        console.log('alert')
+        contactService
+          .updateContact(contact.id, changedContact).then(cont => refreshContacts())
+      }
       return
      }
     

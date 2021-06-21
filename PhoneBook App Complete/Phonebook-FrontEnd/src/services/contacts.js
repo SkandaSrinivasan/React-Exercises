@@ -20,6 +20,6 @@ const deleteContact = (id) => {
 
 const updateContact = (id, newContact) => {
     const request =  axios.put(`${baseUrl}/${id}`, newContact)
-    return request.then(response => response.data)
+    return request.then(response => response.data).catch((error) => console.log('update failed', error.message))
 }
 export default {getAllContacts, createContact, deleteContact, updateContact}
