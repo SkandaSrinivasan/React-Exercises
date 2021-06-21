@@ -75,17 +75,17 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h2>Notes App</h2>
       <Notification message={notificationMessage} />
       <div>
-        Search: <input value={searchName} onChange={updateSearchName} />
+        Search Titles: <input value={searchName} onChange={updateSearchName} />
       </div>
       <form onSubmit={addContact}>
         <div>
-          name: <input value={newName} onChange={updateNewName} />
+          Title: <input value={newName} onChange={updateNewName} />
         </div>
         <div>
-          Number: <input value={number} onChange={updateNumber} />
+          Content: <textarea value={number} onChange={updateNumber} />
         </div>
         <div>
           <button type="submit" >add</button>
