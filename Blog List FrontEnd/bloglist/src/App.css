@@ -1,13 +1,27 @@
 .box {
 
     border-color:#34495e;
-    margin-right:60%;
+    margin-right:80%;
     border-width: 4px;
     border-style:inset;
     background-color:#34495e;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
     font-family: Roboto;
     color:aliceblue;
-    text-align:center;
+}
+
+li {
+    border-color:azure;
+    border-style:solid;
+}
+
+body {
+    background-color:#2f3640;
+    color:#dcdde1;
+}
+
+form {
+    border-color:azure;
+    border-style:solid;
 }

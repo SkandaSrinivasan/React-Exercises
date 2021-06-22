@@ -1,5 +1,6 @@
 import { React, useState } from 'react'
 import './App.css'
+import { DisplayBlogs } from './components/DisplayBlogs'
 
 function App() {
   const [inputValues, setInputValues] = useState({
@@ -37,21 +38,18 @@ function App() {
         Title : <input
           name="title"
           value={inputValues.title}
-          onChange={handleInputChanges} />
+          onChange={handleInputChanges} /> <br />
         Author: <input 
           name="author"
           value={inputValues.author}
-          onChange={handleInputChanges} />
+          onChange={handleInputChanges} /> <br />
         URL: <input 
           name="url"
           value={inputValues.url}
-          onChange={handleInputChanges} />
-        <button type="submit" >add</button>
+          onChange={handleInputChanges} /> <br />
+        <button type="submit" >Add Blog</button>
       </form>
-      <ul>
-        {console.log(blogs.length)}
-        {blogs.map(blog => <li key={blog.title}>{JSON.stringify(blog)}</li>)}
-      </ul>
+      <DisplayBlogs blogs={blogs} />
     </div>
   );
 }
