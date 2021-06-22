@@ -1,0 +1,13 @@
+.box {
+
+    border-color:#34495e;
+    margin-right:60%;
+    border-width: 4px;
+    border-style:inset;
+    background-color:#34495e;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Roboto;
+    color:aliceblue;
+    text-align:center;
+}
