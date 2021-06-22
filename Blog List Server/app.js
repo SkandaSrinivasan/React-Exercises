@@ -10,7 +10,7 @@ mongoose.connect(config.DB_URI, { useNewUrlParser: true, useUnifiedTopology: tru
     .catch((error)=> console.log('Error in connecting to DB', error))
 
 app.use(cors())
-app.use(express.static('build'))
+//app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
